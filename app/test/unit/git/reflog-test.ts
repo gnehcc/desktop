@@ -56,17 +56,5 @@ describe('git/reflog', () => {
       expect(branches).to.contain('branch-1')
       expect(branches).to.contain('branch-2-test')
     })
-
-    it('returns a limited number of branches', async () => {
-      await createAndCheckout(repository!, 'branch-1')
-      await createAndCheckout(repository!, 'branch-2')
-      await createAndCheckout(repository!, 'branch-3')
-      await createAndCheckout(repository!, 'branch-4')
-
-      const branches = await getRecentBranches(repository!, 2)
-      expect(branches.length).to.equal(2)
-      expect(branches).to.contain('branch-4')
-      expect(branches).to.contain('branch-3')
-    })
   })
 })
